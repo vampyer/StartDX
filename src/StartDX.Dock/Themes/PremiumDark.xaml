@@ -1,0 +1,108 @@
+<!--
+  PREMIUM DARK - deep gray / obsidian surfaces, hairline contrasting borders, crisp neon accents.
+  No blur: surfaces are effectively opaque so text contrast is constant regardless of wallpaper.
+-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+    <!-- Backdrop -->
+    <sys:String x:Key="Theme.Backdrop.Kind">None</sys:String>
+    <Color x:Key="Theme.Backdrop.Tint">#FF0B0C0F</Color>
+    <sys:Boolean x:Key="Theme.Backdrop.Dark">True</sys:Boolean>
+    <sys:String x:Key="Theme.Backdrop.Corners">RoundSmall</sys:String>
+    <Color x:Key="Theme.Backdrop.BorderColor">#FF2C2F3A</Color>
+
+    <!-- Type / motion -->
+    <FontFamily x:Key="Theme.Font.Family">Segoe UI Variable Text, Segoe UI</FontFamily>
+    <sys:Double x:Key="Theme.Font.Size">13</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.Small">11.5</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.Header">14</sys:Double>
+    <sys:Double x:Key="Theme.Motion.HoverScale">1.04</sys:Double>
+    <sys:Double x:Key="Theme.Motion.HoverMs">130</sys:Double>
+    <sys:Double x:Key="Theme.Motion.OpenMs">190</sys:Double>
+    <sys:Double x:Key="Theme.Motion.SlidePx">14</sys:Double>
+
+    <!-- Text / accent -->
+    <SolidColorBrush x:Key="Theme.Text.Primary" Color="#FFF1F3F7"/>
+    <SolidColorBrush x:Key="Theme.Text.Secondary" Color="#FF8B93A4"/>
+    <SolidColorBrush x:Key="Theme.Text.OnAccent" Color="#FF04070A"/>
+    <SolidColorBrush x:Key="Theme.Accent" Color="#FF00E5FF"/>
+    <SolidColorBrush x:Key="Theme.Accent.Soft" Color="#3300E5FF"/>
+
+    <!-- Dock -->
+    <LinearGradientBrush x:Key="Theme.Dock.Background" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF17191F" Offset="0"/>
+        <GradientStop Color="#FF0C0D10" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="Theme.Dock.BorderBrush" Color="#FF2C2F3A"/>
+    <Thickness x:Key="Theme.Dock.BorderThickness">1</Thickness>
+
+    <!-- Flyouts -->
+    <LinearGradientBrush x:Key="Theme.Flyout.Background" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FA15171D" Offset="0"/>
+        <GradientStop Color="#FA0C0D11" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Theme.Flyout.BorderBrush" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#FF3A3E4C" Offset="0"/>
+        <GradientStop Color="#FF1F222B" Offset="1"/>
+    </LinearGradientBrush>
+    <Thickness x:Key="Theme.Flyout.BorderThickness">1</Thickness>
+    <CornerRadius x:Key="Theme.Flyout.CornerRadius">12</CornerRadius>
+    <DropShadowEffect x:Key="Theme.Flyout.Effect" Color="#FF000000" BlurRadius="30" ShadowDepth="8" Direction="270" Opacity="0.6"/>
+
+    <!-- Buttons -->
+    <SolidColorBrush x:Key="Theme.Button.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="Theme.Button.BorderBrush" Color="Transparent"/>
+    <Thickness x:Key="Theme.Button.BorderThickness">1</Thickness>
+    <CornerRadius x:Key="Theme.Button.CornerRadius">8</CornerRadius>
+    <SolidColorBrush x:Key="Theme.Button.HoverBackground" Color="#FF1E212A"/>
+    <SolidColorBrush x:Key="Theme.Button.HoverBorderBrush" Color="#FF343846"/>
+    <SolidColorBrush x:Key="Theme.Button.PressedBackground" Color="#FF272B36"/>
+    <SolidColorBrush x:Key="Theme.Button.PressedBorderBrush" Color="#FF00E5FF"/>
+    <SolidColorBrush x:Key="Theme.Item.ActiveBackground" Color="#FF191C23"/>
+    <SolidColorBrush x:Key="Theme.Item.ActiveIndicator" Color="#FF00E5FF"/>
+    <DropShadowEffect x:Key="Theme.Item.ActiveIndicatorEffect" Color="#FF00E5FF" BlurRadius="8" ShadowDepth="0" Opacity="0.9"/>
+
+    <!-- Input / list -->
+    <SolidColorBrush x:Key="Theme.Input.Background" Color="#FF0A0B0E"/>
+    <SolidColorBrush x:Key="Theme.Input.BorderBrush" Color="#FF2C2F3A"/>
+    <SolidColorBrush x:Key="Theme.Input.FocusBorderBrush" Color="#FF00E5FF"/>
+    <SolidColorBrush x:Key="Theme.Input.Foreground" Color="#FFF1F3F7"/>
+    <SolidColorBrush x:Key="Theme.Input.Placeholder" Color="#FF6C7484"/>
+    <CornerRadius x:Key="Theme.Input.CornerRadius">8</CornerRadius>
+    <SolidColorBrush x:Key="Theme.List.HoverBackground" Color="#FF1E212A"/>
+    <SolidColorBrush x:Key="Theme.List.HoverForeground" Color="#FFFFFFFF"/>
+    <CornerRadius x:Key="Theme.List.CornerRadius">7</CornerRadius>
+    <SolidColorBrush x:Key="Theme.Separator" Color="#FF262A33"/>
+    <SolidColorBrush x:Key="Theme.Badge.Background" Color="#FFFF2D95"/>
+    <SolidColorBrush x:Key="Theme.Badge.Foreground" Color="White"/>
+    <SolidColorBrush x:Key="Theme.Scroll.Thumb" Color="#FF3A3E4C"/>
+    <SolidColorBrush x:Key="Theme.Scroll.ThumbHover" Color="#FF00E5FF"/>
+
+    <!-- 128x128 tiles: obsidian plate, hairline rim, neon underline, subtle top light -->
+    <sys:Double x:Key="Theme.Tile.Size">128</sys:Double>
+    <sys:Double x:Key="Theme.Tile.IconSize">84</sys:Double>
+    <LinearGradientBrush x:Key="Theme.Tile.Plate.Background" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF1D2028" Offset="0"/>
+        <GradientStop Color="#FF101217" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Theme.Tile.Plate.BorderBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF3B4050" Offset="0"/>
+        <GradientStop Color="#FF20232C" Offset="1"/>
+    </LinearGradientBrush>
+    <Thickness x:Key="Theme.Tile.Plate.BorderThickness">1</Thickness>
+    <CornerRadius x:Key="Theme.Tile.Plate.CornerRadius">12</CornerRadius>
+    <DropShadowEffect x:Key="Theme.Tile.Plate.Effect" Color="#FF000000" BlurRadius="14" ShadowDepth="3" Direction="270" Opacity="0.55"/>
+    <SolidColorBrush x:Key="Theme.Tile.Plate.HoverBorderBrush" Color="#FF00E5FF"/>
+    <LinearGradientBrush x:Key="Theme.Tile.Sheen" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Color="#1FFFFFFF" Offset="0"/>
+        <GradientStop Color="#00FFFFFF" Offset="0.4"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Theme.Tile.AccentBar" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#0000E5FF" Offset="0"/>
+        <GradientStop Color="#FF00E5FF" Offset="0.5"/>
+        <GradientStop Color="#0000E5FF" Offset="1"/>
+    </LinearGradientBrush>
+    <BitmapImage x:Key="Theme.Tile.ArtOverlay" UriSource="pack://application:,,,/StartDX.Dock;component/Assets/Tiles/dark.png"/>
+</ResourceDictionary>

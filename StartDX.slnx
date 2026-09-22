@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/StartDX.Dock/StartDX.Dock.csproj" />
+    <Project Path="src/StartDX.Settings/StartDX.Settings.csproj" />
+    <Project Path="src/StartDX.Shared/StartDX.Shared.csproj" />
+  </Folder>
+</Solution>

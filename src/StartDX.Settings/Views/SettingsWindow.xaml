@@ -1,0 +1,176 @@
+<Window x:Class="StartDX.Settings.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:infra="clr-namespace:StartDX.Settings.Infrastructure"
+        Title="StartDX Settings" Icon="/Assets/startdx-settings.ico" Width="640" Height="760" MinWidth="520" MinHeight="560"
+        WindowStartupLocation="CenterScreen" Background="#FF101216"
+        FontFamily="Segoe UI Variable Text, Segoe UI" FontSize="13" UseLayoutRounding="True">
+
+    <Window.Resources>
+        <infra:EdgeToBoolConverter x:Key="EdgeToBool"/>
+        <BooleanToVisibilityConverter x:Key="B2V"/>
+
+        <SolidColorBrush x:Key="Fg" Color="#FFF1F3F7"/>
+        <SolidColorBrush x:Key="FgDim" Color="#FF8B93A4"/>
+        <SolidColorBrush x:Key="Card" Color="#FF181B21"/>
+        <SolidColorBrush x:Key="Line" Color="#FF2A2F38"/>
+        <SolidColorBrush x:Key="Accent" Color="#FF4CC2FF"/>
+
+        <Style TargetType="TextBlock"><Setter Property="Foreground" Value="{StaticResource Fg}"/></Style>
+        <Style x:Key="Section" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource FgDim}"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="2,22,0,10"/>
+        </Style>
+
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="{StaticResource Fg}"/>
+            <Setter Property="Margin" Value="0,5"/>
+        </Style>
+
+        <Style x:Key="ChipRadio" TargetType="RadioButton">
+            <Setter Property="Foreground" Value="{StaticResource Fg}"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="B" Background="{StaticResource Card}" BorderBrush="{StaticResource Line}" BorderThickness="1"
+                                CornerRadius="8" Padding="18,8" Cursor="Hand">
+                            <ContentPresenter HorizontalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="B" Property="BorderBrush" Value="{StaticResource Accent}"/>
+                                <Setter TargetName="B" Property="Background" Value="#FF1B2A36"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="B" Property="BorderBrush" Value="#FF4A5160"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PushButton" TargetType="Button">
+            <Setter Property="Foreground" Value="{StaticResource Fg}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="B" Background="{StaticResource Card}" BorderBrush="{StaticResource Line}" BorderThickness="1"
+                                CornerRadius="8" Padding="16,8" Cursor="Hand">
+                            <ContentPresenter HorizontalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="B" Property="BorderBrush" Value="{StaticResource Accent}"/></Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Theme card -->
+        <DataTemplate DataType="{x:Type infra:ThemeOption}">
+            <Button Command="{Binding DataContext.SelectThemeCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    CommandParameter="{Binding}" Margin="0,0,0,10" HorizontalContentAlignment="Stretch" Cursor="Hand">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="B" Background="{StaticResource Card}" BorderBrush="{StaticResource Line}" BorderThickness="1.5"
+                                CornerRadius="12" Padding="14">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="B" Property="BorderBrush" Value="#FF4A5160"/></Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Preview swatch: a 128x128-proportioned tile in the theme's colours -->
+                    <Border Width="64" Height="64" CornerRadius="10" Background="{Binding Preview}" BorderBrush="{Binding Accent}" BorderThickness="1.5">
+                        <Border Height="3" VerticalAlignment="Bottom" Margin="12,0,12,8" CornerRadius="1.5" Background="{Binding Accent}"/>
+                    </Border>
+                    <StackPanel Grid.Column="1" Margin="16,0" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding DisplayName}" FontSize="15" FontWeight="SemiBold" Foreground="{StaticResource Fg}"/>
+                        <TextBlock Text="{Binding Description}" Foreground="{StaticResource FgDim}" TextWrapping="Wrap" Margin="0,3,0,0"/>
+                    </StackPanel>
+                    <TextBlock x:Name="Check" Grid.Column="2" Text="&#x2713; Active" Foreground="{StaticResource Accent}" FontWeight="SemiBold"
+                               VerticalAlignment="Center" Visibility="Collapsed"/>
+                </Grid>
+            </Button>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                    <Setter TargetName="Check" Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </Window.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="32,26,32,28">
+
+            <DockPanel>
+                <Button DockPanel.Dock="Right" Style="{StaticResource PushButton}" Content="Start dock"
+                        Command="{Binding StartDockCommand}" VerticalAlignment="Center"
+                        Visibility="{Binding NotConnected, Converter={StaticResource B2V}}"/>
+                <StackPanel>
+                    <TextBlock Text="StartDX" FontSize="26" FontWeight="SemiBold"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                        <Ellipse Width="9" Height="9" VerticalAlignment="Center" Margin="0,1,8,0">
+                            <Ellipse.Style>
+                                <Style TargetType="Ellipse">
+                                    <Setter Property="Fill" Value="#FFE5A93D"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsConnected}" Value="True"><Setter Property="Fill" Value="#FF3DD68C"/></DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Ellipse.Style>
+                        </Ellipse>
+                        <TextBlock Text="{Binding StatusText}" Foreground="{StaticResource FgDim}"/>
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+
+            <TextBlock Text="THEME" Style="{StaticResource Section}"/>
+            <ItemsControl ItemsSource="{Binding Themes}"/>
+
+            <TextBlock Text="DOCK POSITION" Style="{StaticResource Section}"/>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton Style="{StaticResource ChipRadio}" Content="Top" GroupName="edge" IsChecked="{Binding Edge, Converter={StaticResource EdgeToBool}, ConverterParameter=Top}"/>
+                <RadioButton Style="{StaticResource ChipRadio}" Content="Bottom" GroupName="edge" IsChecked="{Binding Edge, Converter={StaticResource EdgeToBool}, ConverterParameter=Bottom}"/>
+                <RadioButton Style="{StaticResource ChipRadio}" Content="Left" GroupName="edge" IsChecked="{Binding Edge, Converter={StaticResource EdgeToBool}, ConverterParameter=Left}"/>
+                <RadioButton Style="{StaticResource ChipRadio}" Content="Right" GroupName="edge" IsChecked="{Binding Edge, Converter={StaticResource EdgeToBool}, ConverterParameter=Right}"/>
+            </StackPanel>
+
+            <DockPanel Margin="0,16,0,0">
+                <TextBlock DockPanel.Dock="Right" Width="64" TextAlignment="Right" Foreground="{StaticResource FgDim}">
+                    <Run Text="{Binding Thickness, Mode=OneWay}"/><Run Text=" px"/>
+                </TextBlock>
+                <TextBlock Text="Thickness" Width="90" VerticalAlignment="Center"/>
+                <Slider Minimum="36" Maximum="160" TickFrequency="4" IsSnapToTickEnabled="True"
+                        Value="{Binding Thickness, Mode=TwoWay}" VerticalAlignment="Center"/>
+            </DockPanel>
+
+            <TextBlock Text="BEHAVIOUR" Style="{StaticResource Section}"/>
+            <CheckBox Content="Start StartDX when I sign in to Windows" IsChecked="{Binding RunAtStartup}"/>
+            <CheckBox Content="Stay on top of full-screen apps" IsChecked="{Binding OverFullscreen}"/>
+            <CheckBox Content="Show window titles on task buttons (horizontal dock)" IsChecked="{Binding ShowLabels}"/>
+            <CheckBox Content="Windows key and Ctrl+Esc open the StartDX menu" IsChecked="{Binding WinKey}"/>
+            <CheckBox Content="Replace the Windows taskbar and Start menu" IsChecked="{Binding ReplaceTaskbar}"/>
+            <TextBlock Foreground="{StaticResource FgDim}" TextWrapping="Wrap" FontSize="12" Margin="24,2,0,0"
+                       Text="Hides Explorer's taskbar (on every monitor), takes over the notification area, and sends the Windows key / Ctrl+Esc to StartDX instead of the stock Start menu. While this is on, the key shortcuts are always intercepted. Everything is restored when StartDX exits; if it is ever killed, run StartDX.Dock.exe --restore-taskbar."/>
+
+            <TextBlock Text="DIAGNOSTICS" Style="{StaticResource Section}"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{StaticResource PushButton}" Content="Send test notification" Command="{Binding TestNotificationCommand}"/>
+            </StackPanel>
+
+            <TextBlock Text="{Binding Error}" Foreground="#FFFF7A85" TextWrapping="Wrap" Margin="0,14,0,0"/>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

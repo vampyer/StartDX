@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Pure BCL library: shared by the dock (IPC server) and the settings app (IPC client).
+       No WPF/Win32 dependency so the protocol stays trivially testable. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>StartDX.Shared</RootNamespace>
+  </PropertyGroup>
+
+</Project>

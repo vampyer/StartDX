@@ -1,0 +1,11 @@
+bin/
+obj/
+artifacts/
+publish/
+.vs/
+*.user
+*.suo
+
+# Contact sheets from tools/generate-app-icons.ps1 are a review aid, not a repo artifact.
+# The 256px previews (docs/icons/startdx-*.png) are kept.
+docs/icons/sheet-*.png

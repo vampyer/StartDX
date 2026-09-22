@@ -1,0 +1,101 @@
+<!--
+  RETRO UPGRADE - a clean homage to classic desktop chrome: silver solid fills, hard-edged bevels, navy selection bars,
+  square corners. "Upgraded" because it is rendered with layout rounding on device pixels (razor-sharp at any DPI),
+  smooth eased motion, and 256px app icons.
+
+  The bevel is a hard-stop diagonal gradient used as a BorderBrush: light top/left edges, dark bottom/right edges.
+  A "pressed" bevel is the same gradient with the two halves swapped.
+-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+
+    <!-- Bevel: light top/left, dark bottom/right, 2px. Overlay layers (see Controls.xaml) - works on any element shape. -->
+    <SolidColorBrush x:Key="Theme.Bevel.Light" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="Theme.Bevel.Dark" Color="#FF404040"/>
+    <Thickness x:Key="Theme.Bevel.LightThickness">2,2,0,0</Thickness>
+    <Thickness x:Key="Theme.Bevel.DarkThickness">0,0,2,2</Thickness>
+
+    <!-- Backdrop -->
+    <sys:String x:Key="Theme.Backdrop.Kind">None</sys:String>
+    <Color x:Key="Theme.Backdrop.Tint">#FFC0C0C0</Color>
+    <sys:Boolean x:Key="Theme.Backdrop.Dark">False</sys:Boolean>
+    <sys:String x:Key="Theme.Backdrop.Corners">Square</sys:String>
+    <Color x:Key="Theme.Backdrop.BorderColor">#00000000</Color>
+
+    <!-- Type / motion -->
+    <FontFamily x:Key="Theme.Font.Family">Tahoma, Segoe UI</FontFamily>
+    <sys:Double x:Key="Theme.Font.Size">12</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.Small">11</sys:Double>
+    <sys:Double x:Key="Theme.Font.Size.Header">13</sys:Double>
+    <sys:Double x:Key="Theme.Motion.HoverScale">1.02</sys:Double>
+    <sys:Double x:Key="Theme.Motion.HoverMs">110</sys:Double>
+    <sys:Double x:Key="Theme.Motion.OpenMs">170</sys:Double>
+    <sys:Double x:Key="Theme.Motion.SlidePx">10</sys:Double>
+
+    <!-- Text / accent -->
+    <SolidColorBrush x:Key="Theme.Text.Primary" Color="#FF000000"/>
+    <SolidColorBrush x:Key="Theme.Text.Secondary" Color="#FF404040"/>
+    <SolidColorBrush x:Key="Theme.Text.OnAccent" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="Theme.Accent" Color="#FF000080"/>
+    <SolidColorBrush x:Key="Theme.Accent.Soft" Color="#33000080"/>
+
+    <!-- Bevels: every border token below carries its own hard-stop gradient. (Do not alias them with
+         <StaticResource x:Key=.../> entries: the WPF parser drops the entry that precedes such an alias.) -->
+<!-- Dock -->
+    <SolidColorBrush x:Key="Theme.Dock.Background" Color="#FFC0C0C0"/>
+    <SolidColorBrush x:Key="Theme.Dock.BorderBrush" Color="Transparent"/>
+    <Thickness x:Key="Theme.Dock.BorderThickness">2</Thickness>
+
+    <!-- Flyouts -->
+    <SolidColorBrush x:Key="Theme.Flyout.Background" Color="#FFC0C0C0"/>
+    <SolidColorBrush x:Key="Theme.Flyout.BorderBrush" Color="Transparent"/>
+    <Thickness x:Key="Theme.Flyout.BorderThickness">2</Thickness>
+    <CornerRadius x:Key="Theme.Flyout.CornerRadius">0</CornerRadius>
+    <DropShadowEffect x:Key="Theme.Flyout.Effect" Color="#FF000000" BlurRadius="0" ShadowDepth="4" Direction="315" Opacity="0.55"/>
+
+    <!-- Buttons -->
+    <SolidColorBrush x:Key="Theme.Button.Background" Color="#FFC0C0C0"/>
+    <SolidColorBrush x:Key="Theme.Button.BorderBrush" Color="Transparent"/>
+    <Thickness x:Key="Theme.Button.BorderThickness">2</Thickness>
+    <CornerRadius x:Key="Theme.Button.CornerRadius">0</CornerRadius>
+    <SolidColorBrush x:Key="Theme.Button.HoverBackground" Color="#FFD4D0C8"/>
+    <SolidColorBrush x:Key="Theme.Button.HoverBorderBrush" Color="Transparent"/>
+    <SolidColorBrush x:Key="Theme.Button.PressedBackground" Color="#FFB4B0A8"/>
+    <SolidColorBrush x:Key="Theme.Button.PressedBorderBrush" Color="Transparent"/>
+    <SolidColorBrush x:Key="Theme.Item.ActiveBackground" Color="#FFE4E0D8"/>
+    <SolidColorBrush x:Key="Theme.Item.ActiveIndicator" Color="#FF000080"/>
+    <x:Null x:Key="Theme.Item.ActiveIndicatorEffect"/>
+
+    <!-- Input / list -->
+    <SolidColorBrush x:Key="Theme.Input.Background" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="Theme.Input.BorderBrush" Color="Transparent"/>
+    <SolidColorBrush x:Key="Theme.Input.FocusBorderBrush" Color="#FF000080"/>
+    <SolidColorBrush x:Key="Theme.Input.Foreground" Color="#FF000000"/>
+    <SolidColorBrush x:Key="Theme.Input.Placeholder" Color="#FF808080"/>
+    <CornerRadius x:Key="Theme.Input.CornerRadius">0</CornerRadius>
+    <SolidColorBrush x:Key="Theme.List.HoverBackground" Color="#FF000080"/>
+    <SolidColorBrush x:Key="Theme.List.HoverForeground" Color="#FFFFFFFF"/>
+    <CornerRadius x:Key="Theme.List.CornerRadius">0</CornerRadius>
+    <SolidColorBrush x:Key="Theme.Separator" Color="#FF808080"/>
+    <SolidColorBrush x:Key="Theme.Badge.Background" Color="#FFCC0000"/>
+    <SolidColorBrush x:Key="Theme.Badge.Foreground" Color="White"/>
+    <SolidColorBrush x:Key="Theme.Scroll.Thumb" Color="#FF808080"/>
+    <SolidColorBrush x:Key="Theme.Scroll.ThumbHover" Color="#FF000080"/>
+
+    <!-- 128x128 tiles: raised silver slabs -->
+    <sys:Double x:Key="Theme.Tile.Size">128</sys:Double>
+    <sys:Double x:Key="Theme.Tile.IconSize">80</sys:Double>
+    <SolidColorBrush x:Key="Theme.Tile.Plate.Background" Color="#FFC0C0C0"/>
+    <SolidColorBrush x:Key="Theme.Tile.Plate.BorderBrush" Color="Transparent"/>
+    <Thickness x:Key="Theme.Tile.Plate.BorderThickness">3</Thickness>
+    <CornerRadius x:Key="Theme.Tile.Plate.CornerRadius">0</CornerRadius>
+    <DropShadowEffect x:Key="Theme.Tile.Plate.Effect" Color="#FF000000" BlurRadius="0" ShadowDepth="3" Direction="315" Opacity="0.45"/>
+    <SolidColorBrush x:Key="Theme.Tile.Plate.HoverBorderBrush" Color="#FF000080"/>
+    <SolidColorBrush x:Key="Theme.Tile.Sheen" Color="Transparent"/>
+    <LinearGradientBrush x:Key="Theme.Tile.AccentBar" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#FF000080" Offset="0"/>
+        <GradientStop Color="#FF1084D0" Offset="1"/>
+    </LinearGradientBrush>
+    <BitmapImage x:Key="Theme.Tile.ArtOverlay" UriSource="pack://application:,,,/StartDX.Dock;component/Assets/Tiles/retro.png"/>
+</ResourceDictionary>

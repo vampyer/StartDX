@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <!-- net10.0-windows10.0.19041.0 = .NET 10 + WPF + the WinRT projection (used only by the optional
+         UserNotificationListener bridge). Raise the SDK suffix if you need newer WinRT APIs. -->
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>StartDX.Dock</RootNamespace>
+    <AssemblyName>StartDX.Dock</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- Explorer / Task Manager / file-properties icon. Regenerate with tools\generate-app-icons.ps1 -->
+    <ApplicationIcon>Assets\Icons\startdx.ico</ApplicationIcon>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NeutralLanguage>en</NeutralLanguage>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <!-- Trimming/AOT are off: WPF and ComImport interop are not trim-safe. -->
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <!-- Dock and Settings share one output folder so "Settings..." can launch StartDX.Settings.exe next to us. -->
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>$(MSBuildThisFileDirectory)..\..\artifacts\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StartDX.Shared\StartDX.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The WPF SDK strips System.IO from implicit usings (Path clashes with System.Windows.Shapes.Path); we never import Shapes. -->
+    <Using Include="System.IO" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Optional author-supplied 128x128 (@2x = 256px) tile art. Referenced by theme dictionaries. -->
+    <Resource Include="Assets\**\*.png" />
+  </ItemGroup>
+
+</Project>
